@@ -16,6 +16,9 @@
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
+      <div id="unity-mobile-warning">
+        WebGL builds are not supported on mobile devices.
+      </div>
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
@@ -26,9 +29,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/521b70268c8fab9841964e1b75279d0c.js";
       var config = {
-        dataUrl: buildUrl + "/b7eb45450cd7ce5f64f09f72b42966c3.data",
-        frameworkUrl: buildUrl + "/ccabce497d0a3829c48fd5137f570bf1.js",
-        codeUrl: buildUrl + "/573bbe88e9ce1321d7470e01f29d970c.wasm",
+        dataUrl: buildUrl + "/d64dfb3dc8d2c3635b51070e35567340.data",
+        frameworkUrl: buildUrl + "/1770bf00ffef99755a81fe275bb61be6.js",
+        codeUrl: buildUrl + "/4d4f85d97d1c92d0a0e6004c0766b48e.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Ant Devs",
         productName: "Connect!",
@@ -40,10 +43,15 @@
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
         config.devicePixelRatio = 1;
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
       } else {
         canvas.style.width = "960px";
         canvas.style.height = "600px";
